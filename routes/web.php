@@ -25,9 +25,12 @@ use App\Http\Controllers\stock;
 Route::get('/', [stock::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-    
+
 Route::post('/stock-manage', [stock::class, 'add_portfolio'])->name('stock.manage.store');
 
+Route::get('/stock-list', [stock::class, 'listStock'])
+    ->middleware(['auth', 'verified'])
+    ->name('listStock');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Controllers\Apis;
 use App\Models\StockManage;
 use Carbon\Carbon;
+use DateTime;
 
 
 // upstocks api key
@@ -41,7 +42,6 @@ class stock extends Controller
             // Extract the date from the created_at attribute of each stock
             $date = new DateTime($stock->created_at);
             $dayOfWeek = $date->format('D'); // Get the day of the week (short name)
-            print_r($dayOfWeek);
 
             // Push the day of the week to the labels array
             $labels[] = $dayOfWeek;
@@ -76,5 +76,13 @@ class stock extends Controller
         $stockManage->save();
 
         return redirect()->back()->with('success', 'Stock added successfully!');
+    }
+
+    public function listStock(){
+        $stockData = StockManage::where('user_id', auth()->id())->get();
+
+        return view('stock_list', [
+          'stockData' => $stockData
+        ]);
     }
 }
