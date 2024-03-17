@@ -217,10 +217,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      $7000
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Investment</p>
+                    <h5 class="font-weight-bolder mb-0 text-success">
+                    {{ $totalAll }}
+                      <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
                     </h5>
                   </div>
                 </div>
@@ -239,10 +239,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today Investment</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
+                    {{ $totalToday }}
+                      <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
                     </h5>
                   </div>
                 </div>
@@ -284,7 +284,7 @@
                   <div class="col-8">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Update</p>
+                            <p class="text-sm mb-0 text-capitalize font-weight-bold">Create</p>
                             <!-- Button trigger modal -->
                             <h5 class="font-weight-bolder mb-0">
                             $103,430
@@ -1096,7 +1096,7 @@
     new Chart(ctx2, {
       type: "line",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         datasets: [{
             label: "Mobile apps",
             tension: 0.4,
@@ -1106,21 +1106,9 @@
             borderWidth: 3,
             backgroundColor: gradientStroke1,
             fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            data: [50, 40, 300, 220, 500, 250],
             maxBarThickness: 6
 
-          },
-          {
-            label: "Websites",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#3A416F",
-            borderWidth: 3,
-            backgroundColor: gradientStroke2,
-            fill: true,
-            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-            maxBarThickness: 6
           },
         ],
       },

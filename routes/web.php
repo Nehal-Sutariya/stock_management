@@ -22,10 +22,10 @@ use App\Http\Controllers\stock;
 | Base dashboard (used for only stock viwers. viewrs can't add stock from
 | base Dashboard). No need to auth.
 */
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/', [stock::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+    
 Route::post('/stock-manage', [stock::class, 'add_portfolio'])->name('stock.manage.store');
 
 
