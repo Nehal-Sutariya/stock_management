@@ -85,4 +85,25 @@ class stock extends Controller
           'stockData' => $stockData
         ]);
     }
+
+    public function deleteStock($id)
+    {
+        $stock = StockManage::findOrFail($id);
+        $stock->delete();
+        return redirect()->back()->with('success', 'Stock deleted successfully.');
+    }
+
+    public function updateStock($id)
+    {
+        $stock = StockManage::findOrFail($id); 
+        return view('stock_update', ['stock' => $stock]);
+    }
+
+    public function submitStockUpdate(Request $request, $id)
+    {
+        $stock = StockManage::findOrFail($id);
+        $stock->update($request->all());
+        return redirect()->route('listStock'); 
+    }
+
 }

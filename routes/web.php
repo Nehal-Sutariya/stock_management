@@ -32,10 +32,25 @@ Route::get('/stock-list', [stock::class, 'listStock'])
     ->middleware(['auth', 'verified'])
     ->name('listStock');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// deleted stock
+Route::delete('/stock/{id}', [stock::class, 'deleteStock'])
+    ->middleware(['auth', 'verified'])
+    ->name('deleteStock');
 
+Route::get('/stock/{id}', [stock::class, 'updateStock'])
+    ->middleware(['auth', 'verified'])
+    ->name('updateStock');
+    
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+    // update stock
+    Route::put('/stock/{id}', [stock::class, 'submitStockUpdate'])
+    ->middleware(['auth', 'verified'])
+    ->name('submit_stock_update');
+    
+
+    
 require __DIR__.'/auth.php';

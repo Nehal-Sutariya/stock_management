@@ -282,8 +282,8 @@
                             <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                    <form action="{{ route('stock.manage.store') }}" method="POST">
                         <div class="modal-body">
-                            <form action="{{ route('stock.manage.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="stock_name">Stock Name:</label>
@@ -297,14 +297,12 @@
                                     <label for="quantity">Quantity:</label>
                                     <input type="number" class="form-control" id="quantity" name="quantity" required>
                                 </div>
-                                <!-- You can include more fields here if needed -->
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
