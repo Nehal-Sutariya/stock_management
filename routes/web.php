@@ -51,6 +51,4 @@ Route::get('/stock/{id}', [stock::class, 'updateStock'])
     ->middleware(['auth', 'verified'])
     ->name('submit_stock_update');
     
-
-    
 require __DIR__.'/auth.php';
